@@ -1,0 +1,86 @@
+<section class="container-form-center p-2">
+  <form
+      [formGroup]="myForm"
+      (ngSubmit)="onSave()"
+      class="count100-form"
+      autocomplete="off"
+    >
+    <span class="form-count-title pb-2"> Cambiar moneda </span>
+      <p class="form-title-price">PRECIO ACTUAL DEL EURO</p>
+      <p class="pb-2.5">€ {{price}} </p>  <!-- valor actual de dolar -->
+    <div class="wrap-input100 m-b-23">
+      <span class="label-input100">Moneda</span>
+    <select
+      formControlName="monedaOrigen"
+      class="form-select mb-3"
+      aria-label="Large select example"
+    >
+     <option
+        selected
+      >
+      Seleccionar Moneda
+    </option>
+<!-- TODO: Arreglar ngfor mostrar los currecny -->
+       @for ( publisher of publishers; track $index) {
+       <option [value]="publisher.id">{{publisher.currency}}</option>
+      }
+    </select>
+    </div>
+    <div class="wrap-input100">
+      <span class="label-input100">Envias</span>
+      <input
+        class="input100"
+        formControlName="monto"
+        placeholder="Ingrese su monto"
+      />
+      <span class="focus-input100"></span>
+    </div>
+    <div class="wrap-input100">
+      <span class="label-input100">Recibes</span>
+      <input
+        class="input100"
+        type="text"
+        formControlName="monedaDestino"
+        placeholder="Ingrese su monto"
+      />
+      <span class="focus-input100"></span>
+    </div>
+    <div class="text-right p-t-8 p-b-31"></div>
+    <div class="container-login100-form-btn">
+      <div class="wrap-login100-form-btn">
+        <div class="login100-form-bgbtn"></div>
+        <button
+          #btnInteracion
+          class="login100-form-btn"
+          type="submit"
+        >
+          Cambiar Ahora
+        </button>
+      </div>
+    </div>
+
+
+<!--   <div *ngIf="showDetails" class="bg-violet-200 mt-6 p-2">
+    <h5 class="text-violet-600 mb-3">Detalles: </h5>
+    <p>Envias: $/ {{myForm.value.transfer}} </p>
+    <p>Recibiste: {{myForm.value.charge}}</p>
+  </div> -->
+
+
+  @if ( myForm.valid ) {
+    @defer ( on interaction(btnInteracion) ) {
+      <div class="bg-violet-200 mt-6 p-2">
+        <h5 class="text-violet-600 mb-3">Detalles: </h5>
+        <p>Envias: $/ {{ currentTransfer}} </p>
+        <p>Recibiste: {{ currentCharge }}</p>
+      </div>
+    }
+  }
+
+</form>
+<pre> {{myForm.value| json}} </pre>
+<pre> {{myForm.valid | json}} </pre>
+
+</section>
+
+

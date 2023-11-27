@@ -1,0 +1,22 @@
+.container-form-center{
+   width: 720px;
+   margin: auto;
+}
+.form-title-price{
+  color: #9E8FB1;
+}
+
+
+.form-count-title {
+  display: block;
+  font-family: Poppins-Bold;
+  font-size: 20px;
+  color: #333333;
+  line-height: 1.2;
+  margin-top: 20px;
+}
+
+.count100-form{
+  padding: 20px;
+}
+
